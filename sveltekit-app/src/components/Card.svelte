@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils';
 	import { urlFor } from '$lib/sanity/image';
-	import type { Post } from '$lib/sanity/queries';
+	import type { Post } from '$lib/sanity/queries/posts';
 
 	export let post: Post;
 </script>

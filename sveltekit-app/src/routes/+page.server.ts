@@ -1,4 +1,4 @@
-import { postsQuery as query, type Post } from '$lib/sanity/queries';
+import { postsQuery as query, type Post } from '$lib/sanity/queries/posts';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
