@@ -5,3 +5,9 @@ export function formatDate(date: string) {
 		year: 'numeric'
 	});
 }
+
+export function truncateText(text: string, maxLength: number, suffix: string = '...') {
+	return text.length > maxLength
+		? `${text.slice(0, maxLength - suffix.length)}${suffix}`
+		: text;
+}

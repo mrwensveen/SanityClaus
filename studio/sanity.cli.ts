@@ -19,4 +19,10 @@ export default defineCliConfig({
   deployment: {
     appId: 'ep9gdafxof83gliwlcbtrloq',
   },
+  typegen: {
+    path: '../sveltekit-app/src/**/*.{ts,tsx,js,jsx}',        // adjust to match your app
+//    schema: './schema.json',                   // or your extracted path
+    generates: '../sveltekit-app/src/lib/sanity/sanity.types.ts',
+//    overloadClientMethods: true,
+  },
 })
