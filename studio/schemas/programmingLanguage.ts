@@ -21,6 +21,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'date',
+      title: 'Date',
+      description: 'Optional date to override _createdAt',
+      type: 'date',
+    }),
+    defineField({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -31,6 +37,12 @@ export default defineType({
     defineField({
       name: 'description',
       title: 'Description',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'anecdote',
+      title: 'Anecdote',
+      description: 'Anecdote or personal experience',
       type: 'blockContent',
     }),
     defineField({

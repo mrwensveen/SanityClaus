@@ -21,6 +21,7 @@ export type ProgrammingLanguage = {
 	_rev: string;
 	title?: string;
 	slug?: Slug;
+	date?: string;
 	mainImage?: {
 		asset?: {
 			_ref: string;
@@ -34,6 +35,7 @@ export type ProgrammingLanguage = {
 		_type: 'image';
 	};
 	description?: BlockContent;
+	anecdote?: BlockContent;
 	link?: string;
 	paradigms?: Array<{
 		name?: string;
@@ -92,6 +94,7 @@ export type Post = {
 	_rev: string;
 	title?: string;
 	slug?: Slug;
+	date?: string;
 	excerpt?: string;
 	mainImage?: {
 		asset?: {
@@ -231,6 +234,7 @@ export type PostQueryResult = {
 	_rev: string;
 	title?: string;
 	slug?: Slug;
+	date?: string;
 	excerpt?: string;
 	mainImage?: {
 		asset?: {
@@ -247,7 +251,7 @@ export type PostQueryResult = {
 	body?: BlockContent;
 } | null;
 // Variable: postsQuery
-// Query: *[_type == "post" && defined(slug.current)] | order(_createdAt desc)
+// Query: *[_type == "post" && defined(slug.current)] | order(coalesce(date, _createdAt) desc)
 export type PostsQueryResult = Array<{
 	_id: string;
 	_type: 'post';
@@ -256,6 +260,7 @@ export type PostsQueryResult = Array<{
 	_rev: string;
 	title?: string;
 	slug?: Slug;
+	date?: string;
 	excerpt?: string;
 	mainImage?: {
 		asset?: {
@@ -283,6 +288,7 @@ export type GET_PROGRAMMING_LANGUAGEResult = {
 	_rev: string;
 	title?: string;
 	slug?: Slug;
+	date?: string;
 	mainImage?: {
 		asset?: {
 			_ref: string;
@@ -296,6 +302,7 @@ export type GET_PROGRAMMING_LANGUAGEResult = {
 		_type: 'image';
 	};
 	description?: BlockContent;
+	anecdote?: BlockContent;
 	link?: string;
 	paradigms?: Array<{
 		name?: string;
@@ -305,7 +312,7 @@ export type GET_PROGRAMMING_LANGUAGEResult = {
 	}>;
 } | null;
 // Variable: GET_PROGRAMMING_LANGUAGES
-// Query: *[_type == "programmingLanguage" && defined(slug.current)] | order(_createdAt desc)
+// Query: *[_type == "programmingLanguage" && defined(slug.current)] | order(coalesce(date, _createdAt) desc)
 export type GET_PROGRAMMING_LANGUAGESResult = Array<{
 	_id: string;
 	_type: 'programmingLanguage';
@@ -314,6 +321,7 @@ export type GET_PROGRAMMING_LANGUAGESResult = Array<{
 	_rev: string;
 	title?: string;
 	slug?: Slug;
+	date?: string;
 	mainImage?: {
 		asset?: {
 			_ref: string;
@@ -327,6 +335,7 @@ export type GET_PROGRAMMING_LANGUAGESResult = Array<{
 		_type: 'image';
 	};
 	description?: BlockContent;
+	anecdote?: BlockContent;
 	link?: string;
 	paradigms?: Array<{
 		name?: string;
@@ -336,7 +345,7 @@ export type GET_PROGRAMMING_LANGUAGESResult = Array<{
 	}>;
 }>;
 // Variable: GET_POSTS_OR_LANGS
-// Query: *[_type in ["post", "programmingLanguage"] && defined(slug.current)] | order(_createdAt desc)
+// Query: *[_type in ["post", "programmingLanguage"] && defined(slug.current)] | order(coalesce(date, _createdAt) desc)
 export type GET_POSTS_OR_LANGSResult = Array<
 	| {
 			_id: string;
@@ -346,6 +355,7 @@ export type GET_POSTS_OR_LANGSResult = Array<
 			_rev: string;
 			title?: string;
 			slug?: Slug;
+			date?: string;
 			excerpt?: string;
 			mainImage?: {
 				asset?: {
@@ -369,6 +379,7 @@ export type GET_POSTS_OR_LANGSResult = Array<
 			_rev: string;
 			title?: string;
 			slug?: Slug;
+			date?: string;
 			mainImage?: {
 				asset?: {
 					_ref: string;
@@ -382,6 +393,7 @@ export type GET_POSTS_OR_LANGSResult = Array<
 				_type: 'image';
 			};
 			description?: BlockContent;
+			anecdote?: BlockContent;
 			link?: string;
 			paradigms?: Array<{
 				name?: string;
@@ -397,9 +409,9 @@ import '@sanity/client';
 declare module '@sanity/client' {
 	interface SanityQueries {
 		'*[_type == "post" && slug.current == $slug][0]': PostQueryResult;
-		'*[_type == "post" && defined(slug.current)] | order(_createdAt desc)': PostsQueryResult;
+		'*[_type == "post" && defined(slug.current)] | order(coalesce(date, _createdAt) desc)': PostsQueryResult;
 		'*[_type == "programmingLanguage" && slug.current == $slug][0]': GET_PROGRAMMING_LANGUAGEResult;
-		'*[_type == "programmingLanguage" && defined(slug.current)] | order(_createdAt desc)': GET_PROGRAMMING_LANGUAGESResult;
-		'\n\t*[_type in ["post", "programmingLanguage"] && defined(slug.current)] | order(_createdAt desc)\n': GET_POSTS_OR_LANGSResult;
+		'*[_type == "programmingLanguage" && defined(slug.current)] | order(coalesce(date, _createdAt) desc)': GET_PROGRAMMING_LANGUAGESResult;
+		'\n\t*[_type in ["post", "programmingLanguage"] && defined(slug.current)] | order(coalesce(date, _createdAt) desc)\n': GET_POSTS_OR_LANGSResult;
 	}
 }

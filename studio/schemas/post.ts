@@ -21,6 +21,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'date',
+      title: 'Date',
+      description: 'Optional date to override _createdAt',
+      type: 'date',
+    }),
+    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
