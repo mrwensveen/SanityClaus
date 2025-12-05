@@ -11,15 +11,15 @@
 	},
 	"dependencies": {
 		"@sanity/client": "^7.13.1",
-		"@sanity/image-url": "^2.0.1",
+		"@sanity/image-url": "^2.0.2",
 		"@sanity/svelte-loader": "^2.0.2",
 		"@sanity/visual-editing": "^4.0.2",
-		"groq": "4.19.0"
+		"groq": "4.20.3"
 	},
 	"devDependencies": {
 		"@portabletext/svelte": "^3.0.1",
 		"@portabletext/types": "^3.0.0",
-		"@sanity/types": "4.19.0",
+		"@sanity/types": "4.20.3",
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/kit": "^2.49.1",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
@@ -28,7 +28,7 @@
 		"autoprefixer": "^10.4.22",
 		"eslint": "^9.39.1",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-svelte": "^3.13.0",
+		"eslint-plugin-svelte": "^3.13.1",
 		"postcss": "^8.5.6",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.0",
