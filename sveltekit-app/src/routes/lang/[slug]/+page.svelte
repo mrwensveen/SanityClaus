@@ -27,11 +27,16 @@
 			<div>
 				<h1 class="post__title">{post.title}</h1>
 				<p class="post__date">
-					{formatDate(post._createdAt)}
+					{formatDate(post.date || post._createdAt)}
 				</p>
 				{#if post.description}
 					<div class="post__content">
 						<PortableText components={{}} value={post.description} />
+					</div>
+				{/if}
+				{#if post.anecdote}
+					<div class="post__content">
+						<PortableText value={post.anecdote} />
 					</div>
 				{/if}
 			</div>

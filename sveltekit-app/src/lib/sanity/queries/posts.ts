@@ -4,13 +4,14 @@ import groq from 'groq';
 
 export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]`;
 
-export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`;
+export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(coalesce(date, _createdAt) desc)`;
 
 export interface Post {
 	_type: 'post';
 	_createdAt: string;
 	title?: string;
 	slug: Slug;
+	date?: string;
 	excerpt?: string;
 	mainImage?: ImageAsset;
 	body: PortableTextBlock[];
