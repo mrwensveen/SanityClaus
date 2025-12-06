@@ -5,6 +5,7 @@
 	import { formatDate } from '$lib/utils';
 	import { urlFor } from '$lib/sanity/image';
 	import type { PageData } from './$types';
+	import Code from '../../../components/blockContent/Code.svelte';
 
 	export let data: PageData;
 	const q = useQuery(data);
@@ -36,7 +37,11 @@
 				{/if}
 				{#if post.anecdote}
 					<div class="post__content">
-						<PortableText value={post.anecdote} />
+						<PortableText value={post.anecdote} components={{
+							types: {
+								code: Code
+							}
+						}} />
 					</div>
 				{/if}
 			</div>

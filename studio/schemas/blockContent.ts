@@ -1,4 +1,16 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
+
+export const codeContent = defineType({
+  name: 'code',
+  title: 'Code',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'text',
+      type: 'text'
+    })
+  ],
+});
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -55,6 +67,9 @@ export default defineType({
           },
         ],
       },
+    }),
+    defineArrayMember({
+      type: 'code',
     }),
   ],
 })
