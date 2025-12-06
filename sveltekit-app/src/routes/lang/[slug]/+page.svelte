@@ -11,6 +11,12 @@
 	const q = useQuery(data);
 
 	$: ({ data: post } = $q);
+	
+	const components = {
+		types: {
+			code: Code
+		}
+	};
 </script>
 
 <section class="post">
@@ -32,16 +38,12 @@
 				</p>
 				{#if post.description}
 					<div class="post__content">
-						<PortableText components={{}} value={post.description} />
+						<PortableText components={components} value={post.description} />
 					</div>
 				{/if}
 				{#if post.anecdote}
 					<div class="post__content">
-						<PortableText value={post.anecdote} components={{
-							types: {
-								code: Code
-							}
-						}} />
+						<PortableText value={post.anecdote} components={components} />
 					</div>
 				{/if}
 			</div>
